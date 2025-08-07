@@ -1,0 +1,25 @@
+{
+  "name": "global-video-connect",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:https": "vite --https",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start:https": "npm run dev:https & npm run ngrok:frontend & npm run ngrok:backend"
+  },
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "socket.io-client": "^4.7.4",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "@types/uuid": "^9.0.7",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.0"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Global Video Connect",
+  "description": "A web application for user registration, login, and peer-to-peer video calling with users globally using WebRTC.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
