@@ -15,7 +15,7 @@ let peerConnections: Map<string, RTCPeerConnection> = new Map();
 // Event listeners
 const eventListeners: Map<string, Function[]> = new Map();
 
-export const initializeSocket = (serverUrl: string = 'http://192.168.1.43:3001') => {
+export const initializeSocket = (serverUrl: string = 'https://global-video-connect.onrender.com') => {
   if (socket && isConnected) {
     console.log('Socket already connected');
     return socket;
