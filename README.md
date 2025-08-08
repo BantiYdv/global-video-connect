@@ -29,14 +29,13 @@ A real-time global video calling application that allows users to join video roo
 ### 1. Install Frontend Dependencies
 
 ```bash
+dcd frontend
 npm install
 ```
 
 ### 2. Install Server Dependencies
 
 ```bash
-# Copy server package.json to server directory
-cp server-package.json server/package.json
 cd server
 npm install
 ```
@@ -55,41 +54,40 @@ The server will start on `http://localhost:3001`
 ### 2. Start the Frontend Development Server
 
 ```bash
-# In the root directory
+cd frontend
 npm run dev
 ```
 
 The application will be available at `http://localhost:5173`
 
-## Usage
-
-1. **Register/Login**: Create an account or login with existing credentials
-2. **Join a Room**: 
-   - Create a new room with a custom name
-   - Join an existing room by clicking on it
-   - Use the "Quick Join" feature to enter a room ID directly
-3. **Video Call**: 
-   - Allow camera and microphone permissions
-   - Use the controls to mute/unmute or enable/disable video
-   - Click on participant videos to view them in speaker mode
-   - Use the grid view to see all participants
-
 ## Project Structure
 
 ```
 global-video-connect/
-├── components/
-│   ├── AuthForm.tsx          # User authentication
-│   ├── GlobalVideoCall.tsx   # Multi-participant video call UI
-│   ├── RoomList.tsx          # Room listing and creation
-│   ├── icons.tsx             # SVG icons
-│   └── VideoCall.tsx         # Legacy single-call component
-├── services/
-│   └── webrtcService.ts      # WebRTC and WebSocket logic
-├── types.ts                  # TypeScript type definitions
-├── App.tsx                   # Main application component
-├── server.js                 # WebSocket server
-└── package.json              # Frontend dependencies
+├── frontend/
+│   ├── components/
+│   │   ├── AuthForm.tsx          # User authentication
+│   │   ├── GlobalVideoCall.tsx   # Multi-participant video call UI
+│   │   ├── RoomList.tsx          # Room listing and creation
+│   │   └── icons.tsx             # SVG icons
+│   ├── services/
+│   │   └── webrtcService.ts      # WebRTC and WebSocket logic
+│   ├── types.ts                  # TypeScript type definitions
+│   ├── App.tsx                   # Main application component
+│   ├── index.html                # Vite HTML entry
+│   ├── index.tsx                 # React entry
+│   ├── vite.config.ts            # Vite config
+│   ├── tsconfig.json             # TypeScript config
+│   ├── package.json              # Frontend dependencies
+│   └── package-lock.json
+├── server/
+│   ├── server.js                 # WebSocket/HTTP signaling server
+│   ├── certs/                    # (Optional) dev certs if needed
+│   ├── package.json
+│   └── package-lock.json
+├── certs/                        # (Optional) root-level cert tooling (dev only)
+├── README.md
+└── .gitignore
 ```
 
 ## WebRTC Features
@@ -110,9 +108,9 @@ global-video-connect/
 
 ### Adding New Features
 
-1. **New Room Types**: Modify the `Room` interface in `types.ts`
-2. **Additional Controls**: Add new controls to `GlobalVideoCall.tsx`
-3. **Custom Signaling**: Extend the signaling protocol in `webrtcService.ts`
+1. **New Room Types**: Modify the `Room` interface in `frontend/types.ts`
+2. **Additional Controls**: Add new controls to `frontend/components/GlobalVideoCall.tsx`
+3. **Custom Signaling**: Extend the signaling protocol in `frontend/services/webrtcService.ts`
 
 ### Testing
 
@@ -126,6 +124,7 @@ global-video-connect/
 ### Frontend
 
 ```bash
+cd frontend
 npm run build
 ```
 
@@ -137,6 +136,7 @@ PORT=3001
 NODE_ENV=production
 
 # Start server
+cd server
 npm start
 ```
 
